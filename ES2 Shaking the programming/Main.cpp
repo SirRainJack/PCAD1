@@ -15,8 +15,10 @@ printf("Starting task1\n");
 for(int i=0; i<Iterations; i++) {
 flag1 = 1;
 turn = 2;
+__sync_synchronize();
 while((flag2 == 1) && (turn == 2)) //skip
 ;
+__sync_synchronize();
 SharedCounter++;
 flag1 = 0;
 }
@@ -29,8 +31,10 @@ printf("Starting task1\n");
 for(int i=0; i<Iterations; i++) {
 flag2 = 1;
 turn = 1;
+__sync_synchronize();
 while((flag1 == 1) && (turn == 1)) //skip
 ;
+__sync_synchronize();
 SharedCounter++;
 flag2 = 0;
 }
