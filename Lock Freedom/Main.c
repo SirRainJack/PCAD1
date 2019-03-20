@@ -14,7 +14,7 @@ void proc1() {
 
 void proc2() { 
 
- // inserite schema di mutua esclusione con LTS o CAS
+ 
 
 }
 
