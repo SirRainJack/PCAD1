@@ -13,22 +13,21 @@ int lock = 0;
 void proc1() {
   bool old;
   while(true) {
-    old = 1;
-    __sync_bool_compare_and_swap (&old,old,lock);
-    if (old == 0)
-      ++gSharedCounter;
+    while (!__sync_bool_compare_and_swap (&lock,0,1));
+      
+    ++gSharedCounter;
+    
     lock = 0;
     break;
   }
 }
 
 void proc2() { 
-  bool old2;
   while(true) {
-    old2 = 1;
-    __sync_bool_compare_and_swap (&old2,old2,lock);
-    if (old2 == 0)
+   while (!__sync_bool_compare_and_swap (&lock,0,1));
+
       ++gSharedCounter;
+
     lock = 0;
     break;
   }
