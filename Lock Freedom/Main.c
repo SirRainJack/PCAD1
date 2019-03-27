@@ -8,13 +8,14 @@ static volatile int gSharedCounter = 0;
 
 int gloopCount;
 
+int lock = 0;
+
 void proc1() {
-
+  
 }
-
+ddd
 void proc2() { 
 
- 
 
 }
 
